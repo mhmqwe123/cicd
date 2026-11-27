@@ -1,6 +1,16 @@
 from flask import Flask, jsonify
+from werkzeug.routing import IntegerConverter
 
 app = Flask(__name__)
+
+
+class SignedIntConverter(IntegerConverter):
+    """int-конвертер, принимающий отрицательные числа."""
+    regex = r"-?\d+"
+
+
+# Регистрируем конвертер под именем "int" (переопределяем стандартный)
+app.url_map.converters["int"] = SignedIntConverter
 
 
 @app.route("/")
