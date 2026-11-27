@@ -30,6 +30,10 @@ def version():
     """Возвращает текущую версию приложения."""
     return jsonify({"version": "1.0.0"})
 
+@app.route("/zero")
+def get_zero():
+    """Возвращает ноль."""
+    return jsonify({"result": 0})
 
 @app.route("/sum/<int:a>/<int:b>")
 def sum_numbers(a: int, b: int):
