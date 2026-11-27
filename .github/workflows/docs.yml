@@ -31,7 +31,7 @@ jobs:
       - name: Generate Markdown docs from docstrings
         run: |
           mkdir -p docs/build
-          pydoc-markdown -m app > docs/build/app.md
+          pydoc-markdown --search-path . -m app > docs/build/app.md
           echo "Документация сгенерирована из docstring'ов app.py"
 
       - name: Convert Markdown to HTML
